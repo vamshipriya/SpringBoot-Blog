@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns:th="http://www.thymeleaf.org>">
+<head th:replace="layout::site-head">
+    <meta charset="UTF-8" />
+    <title>Registration</title>
+</head>
+<body>
+<header th:replace="layout::site-header" ></header>
+<h1>Sign Up</h1>
+<form method="post" th:object="${regForm}">
+    <div><label for="firstname">Username:</label></div>
+    <input id="firstname" type="text" name="firstname" th:value="*{firstname}" />
+    <span class="formError" th:if="${#fields.hasErrors('firstname')}"
+          th:errors="*{firstname}">Invalid firstname</span>
+
+
+
+
+
+
+
+
+
+
+    <button type="submit" th:text="#{submitreg}">Submit</button>
+    <a th:href="@{/users/login.html}" th:text="#{loginlink}">Login</a>
+
+</form>
+
+<footer th:replace="layout::site-footer" ></footer>
+</body>
+</html>

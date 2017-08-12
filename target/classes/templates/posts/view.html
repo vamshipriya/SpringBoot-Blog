@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org" xmlns:xlmns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="layout :: site-head">
+    <title th:text="${post.title}">View Post</title>
+
+</head>
+<body>
+<header th:replace="layout::site-header" />
+<main id="posts">
+    <article>
+        <h2 class="title" th:text="${post.title}">Post title</h2>
+        <div class="date">
+            <I>Posted on</I>
+            <span th:text="${#dates.format(post.date,'dd-MMM-yyyy')}">23-Jul-2017</span>
+            <span th:if="${post.author}" th:remove="tag">
+                <i>by</i>
+                <span th:text="${post.author.fullName!= null ?
+                                 post.author.fullName:post.author.username}">Nina king</span>
+            </span>
+        </div>
+        <p class="content" th:utetx="${post.body}">Post content</p>
+    </article>
+</main>
+<footer th:replace="layout::site-footer" />
+</body>
+
+</html>
